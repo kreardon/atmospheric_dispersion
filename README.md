@@ -6,4 +6,4 @@ The IDL code was originally developed for the publication:<BR>
 Reardon, K.P., 2006, "The Effects of Atmospheric Dispersion on High-Resolution Solar Spectroscopy", _Solar Physics_, *239*, pp. 503-517.<BR>
 https://ui.adsabs.harvard.edu/abs/2006SoPh..239..503R/abstract
 
-The Python code is based on the IDL code, thanks to work by Katie Lee and Ryan Hofmann. One significant change in the Puthon version is the means of calculating the solar position/ephemeris.
+The Python code is based on the IDL code, thanks to work by Katie Lee and Ryan Hofmann. One significant change in the Python version is the means of calculating the solar position/ephemeris.
