@@ -1,5 +1,5 @@
 
-The IDL version of the Solar Atmospheric Dispersion Package also requires the installation of the IDL Astronomy User's Library, available here:
+The IDL version of the Solar Atmospheric Dispersion Module also requires the installation of the IDL Astronomy User's Library, available here:
 
 https://idlastro.gsfc.nasa.gov
 
