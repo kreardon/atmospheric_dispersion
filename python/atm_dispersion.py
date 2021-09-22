@@ -179,17 +179,17 @@ def refractivity(
 
     # density of dry air at standard conditions:
     density_axs = atmospheric_density(
-        15*u.deg_C, 101325*u.Pa, 0, xc, dry_air=True)
+        15*u.deg_C, 101325*u.Pa, 0, xc, dry_air=True, verbose=1)
     # density of water vapor at standard conditions:
     density_ws = atmospheric_density(
-        20*u.deg_C, 1333*u.Pa, 100, xc, force_xw=1)
+        20*u.deg_C, 1333*u.Pa, 100, xc, force_xw=1, verbose=1)
 
     # density of dry air at input conditions:
     density_a = atmospheric_density(
-        temperature, pressure_pa, humidity, xc, dry_air=True)
+        temperature, pressure_pa, humidity, xc, dry_air=True, verbose=1)
     # density of water vapor at input conditions:
     density_w = atmospheric_density(
-        temperature, pressure_pa, humidity, xc, water_vapor=True)
+        temperature, pressure_pa, humidity, xc, water_vapor=True, verbose=1)
     if verbose >= 1:
         print("density a - ", density_a, density_axs, density_a/density_axs)
         print("density w - ", density_w, density_ws, density_w/density_ws)
