@@ -1,4 +1,8 @@
 
+The IDL version of the Solar Atmospheric Dispersion Package also requires the installation of the IDL Astronomy User's Library, available here:
+
+https://idlastro.gsfc.nasa.gov
+
 Here are some examples showing how to use the atmospheric_dispersion code in IDL. This goes through many of the same exercises as shown in the jupyter notebook for the Python version. 
 
 ## Define location and atmospheric conditions
