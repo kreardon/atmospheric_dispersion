@@ -125,7 +125,7 @@ ENDIF ELSE BEGIN
 	co2          = Meteo_Conditions[3]
 ENDELSE
 
-refractivity = refractivity(wavelengths,temp,pressure,humidity,co2,/VERBOSE)
+refractivity = refractivity(wavelengths,temp,pressure,humidity,co2,VERBOSE=0)
 
 ; calculate solar position in sky of observer
 ; refract = 0 forces eq2hor to calculate true celestial position, not refracted
@@ -189,7 +189,7 @@ image_scale_factor = FLTARR(N_ELEMENTS(elevation_sun),num_waves)
 
 FOR wv=0,num_waves-1 DO BEGIN
     sun_is_up                = WHERE(elevation_sun GE 1)
-    HELP,sun_is_up
+
     ; calculate atmospheric refraction on a grid evenly spaced in elevation
     refraction_mag           = INTERPOL(refraction_atm[sun_is_up,wv], elevation_sun[sun_is_up], alt_scl_new,/SPLINE)
     ; calculate the difference in refraction between adjacent elevation steps

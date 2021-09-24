@@ -271,16 +271,16 @@ nws = ( 1e-8 * cf * ( w0 + (w1 * wavenumber^2) + (w2 * wavenumber^4) + $
                          (w3 * wavenumber^6) ) ) + 1
 
 ; density of dry air at standard conditions
-density_axs  = atmospheric_density( 15, 101325, 0, xc, force_xw=0, /dry_air)
+density_axs  = atmospheric_density( 15, 101325, 0, xc, force_xw=0, /dry_air, verbose=1)
 ; density of water vapor at standard conditions
-density_ws   = atmospheric_density( 20, 1333, 100, xc, force_xw=1)
+density_ws   = atmospheric_density( 20, 1333, 100, xc, force_xw=1, verbose=1)
 
 ; density of dry air at input/actual conditions
-density_a    = atmospheric_density( temperature , pressure_pa, humidity, xc, /dry_air)
+density_a    = atmospheric_density( temperature , pressure_pa, humidity, xc, /dry_air, verbose=1)
 ; density of water vapor at input/actual conditions
-density_w    = atmospheric_density( temperature , pressure_pa, humidity, xc, /water)
+density_w    = atmospheric_density( temperature , pressure_pa, humidity, xc, /water, verbose=1)
 
-density      = atmospheric_density (temperature, pressure_pa, humidity, xc)
+density      = atmospheric_density (temperature, pressure_pa, humidity, xc, verbose=1)
 
 ; Ciddor, 1996, Eq. (5)
 
@@ -290,10 +290,15 @@ nprop   = nprop_a + nprop_w
 
 
 ;PRINT, density_a, density_axs, density_w, density_ws
-IF (verbose GE 1) THEN PRINT, FORMAT='(%"n(axs): %8.1f  <>  n(ws): %8.1f  <>  rho(a/axs): %15.6f  <>  rho(w/ws):: %15.6f  <>  n(prop): %8.1f")',$
-       (naxs-1)*1e8, (nws-1)*1e8, (density_a/density_axs), (density_w/density_ws), nprop * 1e8
-IF (verbose GE 2) THEN PRINT,FORMAT='(%"n(air): %8.1f <>  n(water): %8.1f")', $
-       (density_a/density_axs) * (naxs - 1) * 1e8, (density_w/density_ws) * (nws - 1) * 1e8
+for nn = 0, N_ELEMENTS(naxs) - 1 do begin
+    IF (verbose GE 1) THEN BEGIN
+        PRINT, FORMAT='(%"wavelength - %6.2f  nm")', wavelength_nm[nn]
+        PRINT, FORMAT='(%"n(axs): %8.1f  <>  n(ws): %8.1f  <>  rho(a/axs): %15.6f  <>  rho(w/ws):: %15.6f  <>  n(prop): %8.1f")',$
+       (naxs[nn]-1)*1e8, (nws[nn]-1)*1e8, (density_a/density_axs), (density_w/density_ws), nprop[nn] * 1e8
+    ENDIF
+    IF (verbose GE 2) THEN PRINT,FORMAT='(%"n(air): %8.1f <>  n(water): %8.1f")', $
+       (density_a/density_axs) * (naxs[nn] - 1) * 1e8, (density_w/density_ws) * (nws[nn] - 1) * 1e8
+endfor
 
 RETURN, nprop
 
