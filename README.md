@@ -1,7 +1,7 @@
 # Atmospheric Dispersion Module for Solar Observations
 
 This repository contains code for calculating the atmospheric refraction at different (visibile and infrared) wavelengths, and from the differences among wavelengths, the magnitude and direction of the dispersion. 
-It is designed specifically for solar observations, with methods to calculate the dispersion for the Sun, given only an observer location and time. There is an additional method to decomposed the dispersion into shifts in the two axes of the helioprojective coordinate system.
+It is designed specifically for solar observations, with methods to calculate the dispersion for the Sun, given only an observer location and time. There is an additional method to decompose the dispersion into shifts in the two axes of the helioprojective coordinate system.
 
 The IDL code was originally developed for the publication:<BR>
 Reardon, K.P., 2006, "The Effects of Atmospheric Dispersion on High-Resolution Solar Spectroscopy", _Solar Physics_, *239*, pp. 503-517.<BR>
