@@ -1,4 +1,7 @@
+__version__ = '0.9'
+
 __all__ = ["refractivity", "atmospheric_refraction", "offsets"]
 
 # Import the submodules
-from . import atm_dispersion.py
+from atm_dispersion import *
+#from .python import *

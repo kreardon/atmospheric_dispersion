@@ -1,0 +1,30 @@
+[project]
+name = "atmospheric-dispersion"
+description = "Atmospheric dispersion calculations for solar observations"
+readme = "README.md"
+version = "0.9"
+authors = [
+    { name = "Kevin P. Reardon", email = "kreardon@nso.edu" }
+]
+license = { text = "BSD 3-Clause License" }
+dependencies = [
+    "numpy",
+    "astropy",
+    "tqdm",
+]
+dynamic = []
+
+[project.urls]
+homepage = "https://github.com/kreardon/atmospheric_dispersion/"
+
+[build-system]
+requires = ["setuptools>=45", "wheel", "setuptools_scm[toml]>=6.2"]
+build-backend = 'setuptools.build_meta'
+
+[tool.setuptools_scm]
+write_to = "sol_atm_dispaersion/_version.py"
+
+#[tool.setuptools]
+#zip_safe = false
+
+[tool.setuptools.packages.find]
