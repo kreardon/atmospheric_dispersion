@@ -1,3 +1,10 @@
+# IDL Stuff
+idlsession*
+*sav
+
+# Hidden Stuff
+oldfiles/
+
 # Mac stuff
 .DS_Store
 
