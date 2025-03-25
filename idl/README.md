@@ -1,24 +1,10 @@
 
-<<<<<<< HEAD
-The IDL version of the Solar Atmospheric Dispersion Module also requires the installation of the IDL Astronomy User's Library, available here:
-
-https://idlastro.gsfc.nasa.gov
-
-Here are some examples showing how to use the atmospheric_dispersion code in IDL. This goes through many of the same exercises as shown in the jupyter notebook for the Python version. 
-
-## Define location and atmospheric conditions
-
-Two key components of the following calculations are the location of the observer and the atmospheric conditions.
-The observer location allows the determination of the elevation of the Sun at any given time.
-The atmospheric conditions allow the atmospheric profile to be estimated, and hence the determination of the refractivity of the air.
-=======
 The IDL version of the Solar Atmospheric Dispersion Module also requires the installation of the IDL Astronomy User's Library, originally available here: <BR>
 https://asd.gsfc.nasa.gov/archive/idlastro/
 <BR> but now with a github repository: <BR>
 https://github.com/wlandsman/IDLAstro
 
 Here are some examples showing how to use the atmospheric_dispersion code in IDL. This goes through many of the same exercises as shown in the jupyter notebook for the Python version. 
->>>>>>> db4f99b (updating README files, adding github repository for IDL Astronomy Library)
 
 ## Define location and atmospheric conditions
 
@@ -50,11 +36,7 @@ The basis of the dispersion calculation is computing the atmospheric refractivit
     n(axs):  27624.2  <>  n(ws):    307.9  <>  rho(a/axs):        0.713946  <>  rho(w/ws)::        0.255684  <>  n(prop):  19800.9
     n(air):  19722.2 <>  n(water):     78.7
 
-<<<<<<< HEAD
-**Compute atmospheric refraction for a range of wavelengths at a single time
-=======
 ## Compute atmospheric refraction for a range of wavelengths at a single time
->>>>>>> db4f99b (updating README files, adding github repository for IDL Astronomy Library)
 
 Here we compute the total refraction at a single time as a function of wavelength. This is the amount of upward deflection of the object with respect to its true position.
 
