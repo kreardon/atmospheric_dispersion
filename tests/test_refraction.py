@@ -17,7 +17,10 @@ latitude  =     20.71*u.deg
 altitude  =     2800.*u.m
 observing_loc = EarthLocation(lat=latitude, lon=longitude, height=altitude)
 
-def refractivity_calc(wavelength):
+time = Time('2021-06-30 17:00:00',scale='utc') + np.zeros((1))
+time.format = 'jd'
+
+def refractivity_calc(wavelength=5000*u.angstrom):
 
     refrac = adm.refractivity(wavelength,
                 atm_conditions['temp'],
@@ -27,8 +30,17 @@ def refractivity_calc(wavelength):
                 verbose=0)
     
     print(refrac)
-    
+
     return refrac
+
+def refractivity_null_calc():
+
+    refrac = adm.refractivity()
+    
+    print(refrac)
+
+    return refrac
+
 
 def refraction_calc(wavelengths):
     time = Time('2021-05-23 17:00:00',scale='utc') + np.zeros((1))
@@ -44,6 +56,21 @@ def refraction_calc(wavelengths):
                                             verbose      = 0)
     return refraction_atm    
 
+def solaroffsets_calc(wavelengths):
+
+    (offsets, refraction_atm) = adm.offsets(wavelengths,
+                                        time,
+                                        air_pressure      = atm_conditions['pressure'],
+                                        air_temp          = atm_conditions['temp'],
+                                        humidity          = atm_conditions['humidity'],
+                                        co2_conc          = atm_conditions['co2_conc'], 
+                                        observer_location = observing_loc,
+                                        verbose           = 0)
+    print(offsets)
+    print(refraction_atm)
+
+    return offsets
+
 def test_refractivity_calc():
     """Check the calculation of the refractivity of air at a given wavelength."""
     import math
@@ -52,9 +79,16 @@ def test_refractivity_calc():
 
     refractivity_calculated = refractivity_calc(wavelength)
     refractivity_expected   = 0.000200
-    print(refractivity_calculated)
+    print("Refractivity (500 nm):", refractivity_calculated)
 
     assert math.isclose(refractivity_calculated, refractivity_expected, rel_tol=1e-1)
+
+    refractivity_null = refractivity_null_calc()
+    print("Refractivity Null:", refractivity_null)
+    refractivity_expected   = 0.000260
+
+    assert math.isclose(refractivity_null[0], refractivity_expected, rel_tol=1e-1)
+
 
 def test_refraction_calc():
     """Check the calculation of the total refraction at a given time, location, wavelength."""
@@ -72,3 +106,17 @@ def test_refraction_calc():
     assert atmospheric_refraction_mag[1] < atmospheric_refraction_mag[0]
     assert (atmospheric_refraction_mag[0] - atmospheric_refraction_mag[1]) >= 0.5
     assert (atmospheric_refraction_mag[0] - atmospheric_refraction_mag[1]) <  5.0
+
+def test_solaroffsets_calc():
+
+    wavelengths = [500, 600] * u.nm
+    
+    offsets = solaroffsets_calc(wavelengths)
+    print(offsets['East-West'])
+    offsets_ew = offsets['East-West'][0]
+    offsets_ns = offsets['North-South'][0]
+
+    assert (offsets_ew[1] - offsets_ew[0]) > 0 
+    assert (offsets_ns[1] - offsets_ns[0]) > 0
+    assert (offsets_ew[1] - offsets_ew[0]) < 10
+    assert (offsets_ns[1] - offsets_ns[0]) < 10

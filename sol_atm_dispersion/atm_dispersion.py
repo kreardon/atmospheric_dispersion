@@ -139,6 +139,9 @@ def refractivity(
     Note that refractivity  = index of refraction - 1
     """
 
+    @u.quantity_input(wavelength_nm=u.arcsec)
+    wavelength_nm = wavelength_nm * u.nm
+    print(wavelength_nm)
     wavelength_mic = wavelength_nm.to(u.micron).value
 
     # convert wavelengths in air to vacuum wavelengths
