@@ -18,10 +18,8 @@ from datetime import datetime
 import numpy as np
 import sys
 from tqdm import tqdm
-sys.path.append('./python/')
 
 print("All modules loaded")
-
 
 # Determine atmospheric density
 
