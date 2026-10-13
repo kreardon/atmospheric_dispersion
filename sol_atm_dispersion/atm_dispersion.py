@@ -126,6 +126,7 @@ def atmospheric_density(
 
 # Use density to get refractivity
 
+@u.quantity_input(wavelength_nm=u.nm, temperature=u.deg_C, pressure_pa=u.Pa)
 def refractivity(
         wavelength_nm=np.array([633.0])*u.nm,
         temperature=20*u.deg_C,
@@ -138,10 +139,8 @@ def refractivity(
     Typical parameters for atmospheric values set as defaults.
     Note that refractivity  = index of refraction - 1
     """
-
-    @u.quantity_input(wavelength_nm=u.arcsec)
-    wavelength_nm = wavelength_nm * u.nm
-    print(wavelength_nm)
+    if verbose >= 1: 
+        print(wavelength_nm)
     wavelength_mic = wavelength_nm.to(u.micron).value
 
     # convert wavelengths in air to vacuum wavelengths
@@ -227,7 +226,7 @@ def atmospheric_refraction(
         air_temp=20*u.deg_C,
         air_pressure=100000.*u.Pa,
         humidity=75.,
-        co2_conc=415.,
+        co2_conc=380.,
         verbose=0):
     """Return the wavelengths-dependent atmospheric refraction
 
