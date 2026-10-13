@@ -1,5 +1,5 @@
 [project]
-name = "atmospheric-dispersion"
+name = "sol_atm_dispersion"
 description = "Atmospheric dispersion calculations for solar observations"
 readme = "README.md"
 version = "0.9"
