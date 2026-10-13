@@ -3,7 +3,7 @@ from astropy.coordinates import EarthLocation, AltAz, TETE
 from astropy.time import Time
 import numpy as np
 
-import atm_dispersion as adm # Atmospheric Dispersion Module
+import sol_atm_dispersion as adm # Atmospheric Dispersion Module
 
 atm_conditions = {
     'temp':     20*u.deg_C,
