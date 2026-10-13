@@ -42,6 +42,7 @@ def atmospheric_density(
     pressure_pa = pressure_pa.to(u.Pa).value  # keep units in pascals
     humidity_partial = humidity/100.
     if verbose >= 2:
+        print("Input Atmospheric Parameters - ")
         print("Temp: ", TT_C, "°C \nPressure: ", pressure_pa,
               " Pa \nHumidity: ", humidity, "% \nCO2: ", xc, " ppm")
 
