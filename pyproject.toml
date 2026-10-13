@@ -10,6 +10,9 @@ dependencies = [
     "numpy",
     "astropy",
     "tqdm",
+    "matplotlib",
+    "scipy",
+    "sunpy",
 ]
 dynamic = ["version"]
 
@@ -27,3 +30,9 @@ write_to = "sol_atm_dispersion/version.py"
 #zip_safe = false
 
 [tool.setuptools.packages.find]
+
+[project.optional-dependencies]
+tests = [
+  "pytest",
+  "pytest-cov",
+]

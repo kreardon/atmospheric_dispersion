@@ -58,7 +58,7 @@ def refraction_calc(wavelengths):
 
 def solaroffsets_calc(wavelengths):
 
-    (offsets, refraction_atm) = adm.offsets(wavelengths,
+    offsets, refraction_atm, _ = adm.offsets(wavelengths,
                                         time,
                                         air_pressure      = atm_conditions['pressure'],
                                         air_temp          = atm_conditions['temp'],
@@ -97,7 +97,7 @@ def test_refraction_calc():
     wavelengths = [500, 600] * u.nm
     refraction_minimum    = [140, 139]
 
-    atmospheric_refraction, input_times = refraction_calc(wavelengths)
+    atmospheric_refraction, input_times, _ = refraction_calc(wavelengths)
     atmospheric_refraction_mag = atmospheric_refraction['refraction_mag (arcsec)'][0]
     print(atmospheric_refraction_mag[0])
 

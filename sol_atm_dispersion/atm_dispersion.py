@@ -240,7 +240,7 @@ def atmospheric_refraction(
     wavelength.astype(float)
 
     # setting default time to now in Julian dates
-    if np.alltrue(input_times == np.array([1])):
+    if np.all(input_times == np.array([1])):
         input_times = Time(np.array([datetime.utcnow()]), scale='utc')
         input_times.format = 'jd'
     else:
@@ -359,7 +359,7 @@ def offsets(
     """
 
     # setting default time to now in Julian dates
-    if np.alltrue(input_times == np.array([1])):
+    if np.all(input_times == np.array([1])):
         input_times = Time(np.array([datetime.utcnow()]), scale='utc')
         input_times.format = 'jd'
     else:
